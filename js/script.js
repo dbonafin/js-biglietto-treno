@@ -1,24 +1,20 @@
-//chiedere all'utente i km che vuole percorrere e l'età del passeggero
+// 1 - DATA COLLECT
 let userKilometers = parseInt ( prompt ("Digita quanti km devi percorrere") );
-console.log(userKilometers);
+let userAge = parseInt ( prompt ("Digita l'età del passeggero") );
 
-let userAge = parseInt ( prompt ("Digita l'età del passggero") );
-console.log(userAge);
+// 2 - LOGIC PROCESS OF THE DIFFERENT PRICES
+//standard ticket
+const priceStandardTicket = parseInt (userKilometers * 0.21) ;
 
-
-
-//il prezzo del biglietto standard è uguale a 0.21 € al km
-const priceStandardTicket = parseInt (userKilometers * "0.21" + "€");
-
-
-//applicare sconto 20% se under18 oppure sconto del 40% se over65
-let userTicket = priceStandardTicket;
-console.log(userTicket);
+//tickets with discount - 20% discount if under18 & 40% discount if over65
+let userTicket =  parseInt (priceStandardTicket) + "€";
 
 if (userAge < 18) {
-    userTicket = priceStandardTicket * "0.2";
+    userTicket = parseInt (priceStandardTicket - (priceStandardTicket * 0.2)) + "€";
 } else if (userAge > 65) {
-    userTicket = priceStandardTicket * "0.4";
+    userTicket = parseInt (priceStandardTicket - (priceStandardTicket * 0.4)) + "€";
 }
 
-//stampare risultato con prezzo biglietto
+// 3 - OUTPUT RESULT
+userMessage = `Il prezzo del tuo biglietto è ${userTicket}`;
+document.getElementById ("ticket-price") .innerHTML = userMessage;
